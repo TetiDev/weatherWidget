@@ -1,186 +1,6 @@
-let weather = {
-  warszawa: {
-    mon: {
-      temp: 18,
-      type: "Rain",
-      pict: "rain_low",
-      wind: 10,
-    },
-    tue: {
-      temp: 23,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 4,
-    },
-    wed: {
-      temp: 21,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 3,
-    },
-    thu: {
-      temp: 16,
-      type: "Rain & Storm",
-      pict: "rain_with_storm",
-      wind: 8,
-    },
-    fri: {
-      temp: 20,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 2,
-    },
-    sat: {
-      temp: 26,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 3,
-    },
-    sun: {
-      temp: 28,
-      type: "Rain high",
-      pict: "rain_high",
-      wind: 2,
-    },
-  },
-  paris: {
-    mon: {
-      temp: 20,
-      type: "Rain & Storm",
-      pict: "rain_with_storm",
-      wind: 8,
-    },
-    tue: {
-      temp: 22,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 3,
-    },
-    wed: {
-      temp: 21,
-      type: "Rain high",
-      pict: "rain_high",
-      wind: 3,
-    },
-    thu: {
-      temp: 19,
-      type: "Rain",
-      pict: "rain_low",
-      wind: 2,
-    },
-    fri: {
-      temp: 25,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 2,
-    },
-    sat: {
-      temp: 24,
-      type: "Rain high",
-      pict: "rain_high",
-      wind: 3,
-    },
-    sun: {
-      temp: 25,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 2,
-    },
-  },
-  london: {
-    mon: {
-      temp: 18,
-      type: "Rain & Storm",
-      pict: "rain_with_storm",
-      wind: 10,
-    },
-    tue: {
-      temp: 21,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 3,
-    },
-    wed: {
-      temp: 24,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 2,
-    },
-    thu: {
-      temp: 20,
-      type: "Rain",
-      pict: "rain_low",
-      wind: 3,
-    },
-    fri: {
-      temp: 22,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 2,
-    },
-    sat: {
-      temp: 26,
-      type: "Rain",
-      pict: "rain_low",
-      wind: 3,
-    },
-    sun: {
-      temp: 29,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 3,
-    },
-  },
-  "new york": {
-    mon: {
-      temp: 25,
-      type: "Rain",
-      pict: "rain_low",
-      wind: 6,
-    },
-    tue: {
-      temp: 23,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 3,
-    },
-    wed: {
-      temp: 20,
-      type: "Sunny & Cloud",
-      pict: "sunny_cloud",
-      wind: 2,
-    },
-    thu: {
-      temp: 20,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 5,
-    },
-    fri: {
-      temp: 30,
-      type: "Rain High",
-      pict: "rain_high",
-      wind: 3,
-    },
-    sat: {
-      temp: 24,
-      type: "Rain & Storm",
-      pict: "rain_with_storm",
-
-      wind: 3,
-    },
-    sun: {
-      temp: 25,
-      type: "Sunny",
-      pict: "sunny",
-      wind: 2,
-    },
-  },
-};
-
 const apiKey = "6f035692382f13a1602ebdd889cd43a6";
 let weekPattern = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let monthPatternLarge = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//let monthPatternLarge = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 let monthPatternSmall = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
 let cities = ["Warszawa", "Paris", "New York", "London"];
@@ -192,7 +12,6 @@ function capitalize(string) {
 
 function getDataFromApi(city) {
   let cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  //let cityUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=4&appid=${apiKey}`;
 
   axios.get(cityUrl).then(fillData).catch((e)=>{
     if(e.response.data.cod === "404"){
@@ -224,9 +43,8 @@ bildCityLink(cities);
 //
 let now = new Date();
 console.log(now);
-let curDayWeekStr = weekPattern[now.getDay()].toLowerCase();
-let curDay = now.getDate();
-let curMonth = now.getMonth();
+//let options = { weekday: 'short', day: 'numeric', year: 'numeric', month: 'short' };
+//curDate.innerHTML = date.toLocaleDateString("en-US", options);
 
 let curTempDayColor = document.querySelector(".block_weather__color .current_temp_day");
 let speedWind = document.querySelector(".speed_wind");
@@ -235,46 +53,42 @@ let typeWeather = document.querySelector(".type_weather");
 let curDate = document.querySelector(".cur_date");
 const blockDaysWeek = document.querySelector(".block_weather .days_weather");
 
-function getNextDay(curDate) {
-  curDate.setDate(curDate.getDate() + 1);
-  return curDate;
-}
 
 //Постороение блока недели по дням
-function bildDaysWeek(curDate, dataFromApi) {
-  let curDaysWeek = now.getDay();
-  let newWeek = [];
-  while (newWeek.length < 4){
-      newWeek.push(curDaysWeek);
-      curDaysWeek = curDaysWeek > 5 ? 0 : ++curDaysWeek;
-  }
-  let newNow =  new Date(curDate);
+function bildDaysWeek(dataFromApi) {
+  console.log("bildDaysWeek", dataFromApi.data);
+  let dataWeeks = dataFromApi.data.daily;
 
-  newWeek.forEach((elem) => {
+  dataWeeks.forEach((elem, index) => {
+    if(index >3){
+      return;
+    }
+
+    let dayWeek = new Date(elem.dt * 1000).getDay();
+    let dayMonth = new Date(elem.dt * 1000).getMonth();
+    let dateWeek = new Date(elem.dt * 1000).getDate();
+    let img = elem.weather[0].description;
+
     let div = document.createElement("div");
     div.className = "col-sm-3 day_weather";
-    let weekDayNow = weekPattern[elem].toLowerCase();
     div.innerHTML =
-      `<p class="week_day">${weekPattern[elem]}</p>
-       <p class="date_day">${newNow.getDate()} ${monthPatternSmall[newNow.getMonth()]}</p>
-       <img class="pict_day" src="http://openweathermap.org/img/wn/${dataFromApi.data.weather[0].icon}@2x.png" height="50" alt="pict"/>
-       <span class="temp_day">${Math.round(dataFromApi.data.main.temp) < 100 ? Math.round(dataFromApi.data.main.temp) : Math.round(dataFromApi.data.main.temp/10)}°</span>
+      `<p class="week_day">${weekPattern[dayWeek]}</p>
+       <p class="date_day">${dateWeek} ${monthPatternSmall[dayMonth]}</p>
+       <img class="pict_day" src="img/${img}.png" height="50" alt="pict"/>
+       <span class="temp_day">${Math.round(elem.temp.day)}°</span>
 `;
     blockDaysWeek.append(div);
-    newNow = getNextDay(newNow);
-  })
+  });
 }
 
 //
 function changeCityWeatherSearch(event) {
   event.preventDefault();
   let input = document.querySelector("input.city_search");
-  //let inputValue = input.value.toLowerCase();
   let citySearch = input.value;
   console.log(citySearch);
   let inputValue = input.value.toLowerCase();
   let city = document.getElementById(citySearch);
-  //document.querySelector(".active_city").classList.remove("active_city");
   getDataFromApi(citySearch);
   document.querySelector(".city_search").value = '';
 }
@@ -290,34 +104,43 @@ function changeCityWeather(event) {
 
 //
 function fillData(response) {
-  console.log(response.data);
+  console.log("fillData", response.data);
+  let coord = response.data.coord;
   let city = response.data.name;
   let cityLower = city.toLowerCase();
-  //console.log(document.getElementById(cityLower));//.classList.add("active_city");
 
   document.querySelector(".caption_current_city").innerHTML = city;
   curTempDayColor.innerHTML = Math.round(response.data.main.temp) < 100 ? Math.round(response.data.main.temp) : Math.round(response.data.main.temp/10);
   localStorage.setItem("temp", curTempDayColor.innerHTML);
   speedWind.innerHTML = Math.round(response.data.wind.speed);
-  img.src = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
+  img.src = `img/${response.data.weather[0].description}.png`;
   typeWeather.innerHTML = capitalize(response.data.weather[0].description);
   //curDate.innerHTML = capitalize(curDayWeekStr) + ", " + curDay + " " + monthPatternSmall[curMonth];
   let date = new Date(response.data.dt * 1000);
-  //let options = { weekday: 'short', day: 'numeric', year: 'numeric', month: 'short' };
   let options = { weekday: 'short', day: 'numeric', month: 'short' };
   curDate.innerHTML = date.toLocaleDateString("en-US", options);
 
   //Погода по дням
   blockDaysWeek.innerHTML = "";
-  bildDaysWeek(now, response);
+  getDataforDailyWeather(coord);
+}
+
+function getDataforDailyWeather(coord) {
+  let curLat = coord['lat'];
+  let curLon = coord['lon'];
+
+  let axi = axios.get(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${curLat}&lon=${curLon}&appid=${apiKey}&units=metric`
+  );
+  axi.then(bildDaysWeek);
 }
 
 function handlePosition(position) {
   let curLatitude = position.coords.latitude;
   let curLongitude = position.coords.longitude;
-  console.log(curLatitude, curLongitude);
+
   let axi = axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${curLatitude}&lon=${curLongitude}&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${curLatitude}&lon=${curLongitude}&appid=${apiKey}&units=metric`
   );
   axi.then(fillData);
 }
