@@ -1,0 +1,137 @@
+body {
+    font-family: "Lato", sans-serif;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.block_weather {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px 0px;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.block_weather__color {
+    background-color: #2b7b9e;
+    color: white;
+}
+
+.block_weather__color a {
+    color: white;
+}
+
+.caption_city {
+    padding-bottom: 20px;
+}
+
+.caption_city span {
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+}
+
+.search_city input {
+    background-color: #efefef;
+    padding: 7px 18px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
+
+.search_city .btn {
+    display: block;
+    color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    border: 2px solid transparent;
+    background: #2b7b9e;
+    transition: all 20ms ease-in-out;
+    height: 50px;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    opacity: 0.9;
+}
+
+.current_city i {
+    font-size: 30px;
+    color: #2b7b9e;
+}
+
+.caption_current_city {
+    color: black;
+    font-size: 30px;
+}
+
+.ico_pict_day {
+    color: #2b7b9e;
+}
+
+.pict_day {
+}
+.days_weather {
+    text-align: center;
+}
+
+.week_day {
+    font-size: 16px;
+    color: #2b7b9e;
+    font-weight: 600;
+}
+
+.date_day {
+    color: #939393;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.current_temp_day,
+.current_measure {
+    font-size: 87px;
+    text-align: center;
+}
+
+.temp_day {
+    margin-top: 12px;
+    font-size: 32px;
+    color: black;
+}
+
+.type_weather {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.measureC,
+.measureF,
+.measureHr {
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+}
+.footer {
+    text-align: center;
+    margin-top: 40px;
+}

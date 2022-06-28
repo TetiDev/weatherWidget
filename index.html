@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Tiro+Gurmukhi&display=swap" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw=="
+      crossorigin="anonymous"
+    />
+    <!-- Дополнительные стили Bootstrap (не обязательно) -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha512-iy8EXLW01a00b26BaqJWaCmk9fJ4PsMdgNRqV96KwMPSH+blO82OHzisF/zQbRIIi8m0PiO10dpS0QxrcXsisw=="
+      crossorigin="anonymous"
+    />
+    <!-- jQuery (необходим для Bootstrap JS) -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Project Summary</title>
+  </head>
+  <body>
+    <header>
+      <h1>WeatherWidget</h1>
+    </header>
+    <div class="block_weather">
+      <div class="row caption_city" style="text-align: center"></div>
+      <div class="row search_city">
+        <div class="col-sm-12">
+          <form>
+            <div class="row">
+              <div class="col-sm-10">
+                <input type="text" class="city_search"  placeholder="Search..."/>
+              </div>
+              <div class="col-sm-2">
+                <button type="submit" class="btn">ok</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="current_city">
+        <div style="
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          ">
+          <img class="ico_pict_day" src="https://img.kidico.com.ua/shecode/Group_1.png" style="margin-right: 10px"/>
+          <span class="caption_current_city"></span>
+        </div>
+        <div class="block_weather block_weather__color">
+          <div class="row weather_city">
+            <div class="col-sm-6">
+              <img class="pict_day" src="https://img.kidico.com.ua/shecode/sunny.png" height="140" alt="type"/>
+              <p class="type_weather">Sunny</p>
+              <p class="cur_date">Tue, 07 June</p>
+            </div>
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-9">
+                  <span class="current_temp_day"></span>
+                  <span class="current_measure">°</span>
+                </div>
+                <div class="col-sm-3" style="padding: 0">
+                  <a class="measureC">°C</a>
+                  <span class="measureHr"> / </span>
+                  <a class="measureF">°F</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6" style="text-align: end">
+                  <img class="pict_day" src="https://img.kidico.com.ua/shecode/wind.png" height="40" alt="wind"/>
+                </div>
+                <div class="col-sm-6">
+                  <p>Wind</p>
+                  <span class="speed_wind">4</span><span> km/h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block_weather">
+        <div class="row days_weather"></div>
+      </div>
+    </div>
+    <footer class="footer">
+      <img src="https://img.kidico.com.ua/shecode/girl.png" width="30" />
+      <p>@ 2022 Coded by Tetiana Hil</p>
+    </footer>
+  </body>
+  <script src="script.js"></script>
+</html>
